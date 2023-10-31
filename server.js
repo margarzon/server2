@@ -3,6 +3,7 @@ const dotenv = require ('dotenv')
 const colors = require ('colors')
 const connectDB = require ('./config/db')
 const  bootcampsRoutes = require ('./routes/bootcampsRoutes')
+const coursesRoutes = require('./routes/coursesRoutes')
 
 //establecer config
 
@@ -29,51 +30,9 @@ app.get('/prueba', (req, res)=>{
 app.use('/bootcamps',
     bootcampsRoutes)
 
+app.use('/courses',
+    coursesRoutes)
 
-
-
-
-
-
-
-//Obtener todos los cursos
-app.get( '/api/v1/devcamp/cursos', (request, response) =>{
-    response.status(200).json({
-        "sucess" : true,
-        "msg" : "Aqui van a mostrarse todos los cursos"
-    })
-})
-
-//Obtener el curso por id
-app.get( '/api/v1/devcamp/cursos/:id', (request, response) =>{
-    response.status(200).json({
-        "sucess" : true,
-        "msg" :  `Obteniendo cursos con id ${ request.params.id }` 
-    })
-})
-
-//Crear curso
-app.post( '/api/v1/devcamp/cursos', (request, response) =>{
-    response.status(200).json({
-        "sucess" : true,
-        "msg" : "Creando curso"
-    })
-})
-
-//Actualizar curso
-app.put( '/api/v1/devcamp/cursos/:id', (request, response) =>{
-    response.status(200).json({
-        "sucess" : true,
-        "msg" : `Actualizando curso con id ${ request.params.id }`
-    })
-})
-//Eliminar curso
-app.delete( '/api/v1/devcamp/cursos/:id', (request, response) =>{
-    response.status(200).json({
-        "sucess" : true,
-        "msg" : `Eliminando curso con id ${ request.params.id }`
-    })
-})
 
 //Ruta del recurso reseñas
 
@@ -164,6 +123,7 @@ app.delete( '/api/v1/devcamp/usuarios/:id', (request, response) =>{
         "msg" : `Eliminando usuario con id ${ request.params.id }`
     })
 })
+
 
 
 

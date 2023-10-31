@@ -37,15 +37,17 @@ router.get ('/:id',
       });
 
 
-    router.put ('/:id',
-        (req , res) => {
-        bootcampId = req.params.id
-        return res.json({
-            succes : true,
-            msg :`actualizando bootcamp cuyo id es: ${bootcampId}`
-        }
-        )
-        })
+      router.put('/:id', async(req, res)=>{
+        const updateBootcamp = await Bootcamp.findByIdAndUpdate(req.params.id , 
+                                                                req.body, 
+                                                                {
+                                                                    new: true
+                                                                })
+        res.json({
+            success:true,
+            data: updateBootcamp
+        })  
+    })
 //4. eliminar
 
 router.delete ('/:id',
